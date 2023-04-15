@@ -20,17 +20,20 @@
 	});
 </script>
 
-<div class="flex items-center justify-center h-screen">
+<div class="flex items-center justify-center m-4 h-screen">
 	<Panel>
 		{#if $projects.fetching}
 			<p>Loading...</p>
 		{:else if $projects.error}
 			<p>Oopsie! {$projects.error.message}</p>
 		{:else}
-			<h1 class="text-xl font-bold text-gray-900 mb-6">Select project</h1>
-			<div class="mb-4">
+			<h1 class="text-xl font-bold text-gray-900 mb-6 px-4">Select project</h1>
+			<div class="mb-4 overflow-y-auto max-h-96">
 				{#each $projects.data.projects.nodes as project}
-					<a href="/projects/{encodeURIComponent(project.id)}" class="flex gap-2 border-b border-t p-4 hover:bg-slate-50">
+					<a
+						href="/projects/{encodeURIComponent(project.id)}"
+						class="flex gap-2 border-b p-4 hover:bg-slate-50"
+					>
 						{#if project.avatarUrl}
 							<img src={project.avatarUrl} alt="" class="w-12 h-12 flex-shrink-0 rounded border" />
 						{:else}

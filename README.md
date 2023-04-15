@@ -36,27 +36,3 @@ npm run build
 You can preview the production build with `npm run preview`.
 
 > To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
-
-## Project
-
-1. Request token page
-
-- if token exists, check if it is valid (show basic info)
-  - if error - show error message
-- otherwise ask user to provide the token
-
-2. List of projects
-
-- fetch list of projects
-- error -> remove token and redirect to request token page
-
-3. Project page
-
-Filters:
-
-- start date
-- end date
-
-Show:
-
-- collapsable table with project users and their time track per issue

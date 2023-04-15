@@ -1,11 +1,17 @@
 <script>
 	import Panel from '$lib/components/panel.svelte';
+	import { browser } from '$app/environment';
+
+	let token = (browser && localStorage.getItem('accesstoken')) || '';
+	const onSubmit = () => {
+		localStorage.setItem('accesstoken', token);
+	};
 </script>
 
 <div class="flex items-center justify-center h-screen">
 	<Panel>
 		<h1 class="text-xl font-bold text-gray-900 mb-6">GitLab timelog analyzer</h1>
-		<form action="/projects">
+		<form action="/projects" on:submit={onSubmit}>
 			<div class="mb-6">
 				<label for="token" class="block mb-2 text-sm font-medium text-gray-900"
 					>Your GitLab token</label
@@ -15,6 +21,7 @@
 					type="password"
 					required
 					placeholder="••••••••"
+					bind:value={token}
 					class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 outline-none"
 				/>
 			</div>
