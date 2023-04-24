@@ -31,7 +31,7 @@
 			<div class="mb-4 overflow-y-auto max-h-96">
 				{#each $projects.data.projects.nodes as project}
 					<a
-						href="/projects/{encodeURIComponent(project.id)}"
+						href="/projects/timelogs?project={encodeURIComponent(project.id)}"
 						class="flex gap-2 border-b p-4 hover:bg-slate-50"
 					>
 						{#if project.avatarUrl}
