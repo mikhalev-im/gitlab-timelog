@@ -64,7 +64,7 @@
 
 <div class="flex justify-center items-center m-4">
 	<div class="rounded-lg border bg-white p-6 w-2/3">
-		<p class="px-10"><a class="hover:text-blue-500" href="/projects">Back to projects</a></p>
+		<p class="px-10"><a class="hover:text-blue-500" href="../projects">Back to projects</a></p>
 
 		{#if $timelogs.fetching}
 			<p class="px-10 py-6">Loading...</p>

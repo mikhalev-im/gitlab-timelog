@@ -1,17 +1,26 @@
 <script>
 	import Panel from '$lib/components/panel.svelte';
+	import { goto } from '$app/navigation';
 	import { browser } from '$app/environment';
 
 	let token = (browser && localStorage.getItem('accesstoken')) || '';
-	const onSubmit = () => {
+	const onSubmit = (e) => {
+		e.preventDefault();
+
 		localStorage.setItem('accesstoken', token);
+
+		const url =
+			location.pathname === '/'
+				? new URL('/projects', location.origin)
+				: new URL(`${location.pathname}/projects`, location.origin);
+		goto(url.href);
 	};
 </script>
 
 <div class="flex items-center justify-center h-screen">
 	<Panel>
 		<h1 class="text-xl font-bold text-gray-900 mb-6">GitLab timelog analyzer</h1>
-		<form action="/projects" on:submit={onSubmit}>
+		<form on:submit={onSubmit}>
 			<div class="mb-6">
 				<label for="token" class="block mb-2 text-sm font-medium text-gray-900"
 					>Your GitLab token</label
